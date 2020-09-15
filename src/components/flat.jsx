@@ -6,6 +6,10 @@ class Flat extends Component {
     this.state = {};
   }
 
+  handleClick = () => {
+    this.props.updateMap(this.props.lat, this.props.lng);
+  };
+
   render() {
     const { price, priceCurrency, imageUrl, name, link = "#" } = this.props;
 
@@ -15,6 +19,7 @@ class Flat extends Component {
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${imageUrl}')`,
         }}
+        onClick={this.handleClick}
       >
         <div className="card-category">{`${price} ${priceCurrency}`}</div>
         <div className="card-description">

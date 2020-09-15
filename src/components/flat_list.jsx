@@ -18,6 +18,9 @@ class FlatList extends Component {
           price={flat.price}
           priceCurrency={flat.priceCurrency}
           key={flat.name}
+          lat={flat.lat}
+          lng={flat.lng}
+          updateMap={this.props.updateMap}
         />
       );
     });

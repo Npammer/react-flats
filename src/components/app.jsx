@@ -6,15 +6,27 @@ import FlatList from "./flat_list";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      selectedLat: 59.95216,
+      selectedlng: 10.85124,
+    };
   }
 
+  updateMap = (lat, lng) => {
+    this.setState({
+      selectedLat: lat,
+      selectedlng: lng,
+    });
+  };
+
   render() {
+    const { selectedLat, selectedlng } = this.state;
+
     return (
       <div className="">
-        <FlatList />
+        <FlatList updateMap={this.updateMap} />
         <div className="map-container">
-          <SimpleMap />
+          <SimpleMap lat={selectedLat} lng={selectedlng} />
         </div>
       </div>
     );

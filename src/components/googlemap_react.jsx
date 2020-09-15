@@ -2,28 +2,33 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import { googleApi } from "/Users/nikolai/code/Projects/react-flats/api/api";
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import Marker from "./marker";
 
 class SimpleMap extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95216,
-      lng: 10.85124,
+      lat: 48.856613,
+      lng: 2.352222,
     },
-    zoom: 11,
+    zoom: 13,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
+    const { lat, lng, center, zoom } = this.props;
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: "100vh", width: "100%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: googleApi }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          defaultCenter={center}
+          defaultZoom={zoom}
         >
-          <AnyReactComponent lat={59.95216} lng={10.85124} text="My Marker" />
+          <Marker lat={lat} lng={lng} />
         </GoogleMapReact>
       </div>
     );
